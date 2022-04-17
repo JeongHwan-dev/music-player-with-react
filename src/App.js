@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { data } from './TestItem/testData';
 
-function App() {
+import SortableList from './lib/SortableList';
+import TestItem from './TestItem/TestItem';
+
+const App = () => {
+  const onDropItem = (newListData) => {
+    console.log(newListData);
+  };
+
+  const onClickItem = (index) => {
+    alert(index);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SortableList
+      data={data}
+      renderItem={(item, index) => <TestItem data={item} index={index} />}
+      onDropItem={onDropItem}
+      onClickItem={onClickItem}
+    />
   );
-}
+};
 
 export default App;
